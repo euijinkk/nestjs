@@ -92,6 +92,5 @@ router.patch("/cats/:id", (req, res) => {
     res.status(400).send({ success: false, error: error.message });
   }
 });
-``;
 
 export default router;
