@@ -7,6 +7,7 @@ const app: express.Express = express(); // express instance
 // 추후 객체에 접근할 때 메모리 낭비 방지
 // 다른 곳에서 데이터 접근이 쉽다. 데이터 공유하여 사용
 // Server를 따로 싱글톤으로 분리하기
+// + service 패턴을 활용하여 비즈니스 로직을 구분하여 가독성을 높이기
 
 class Server {
   public app: express.Application;
