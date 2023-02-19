@@ -44,4 +44,54 @@ router.post("/cats", (req, res) => {
   }
 });
 
+router.put("/cats/:id", (req, res) => {
+  try {
+    const cat = req.body;
+
+    let result;
+    Cat.forEach((c) => {
+      if (c.id === req.params.id) {
+        c = cat;
+        result = c;
+      }
+    });
+
+    // const cat = cats.find((c) => c.id === req.params.id);
+    res.status(200).send({ success: true, data: result });
+  } catch (error) {
+    res.status(400).send({ success: false, error: error.message });
+  }
+});
+
+router.patch("/cats/:id", (req, res) => {
+  try {
+    const cat = req.body;
+    let result;
+
+    Cat.forEach((c) => {
+      if (c.id === req.params.id) {
+        c = { ...c, ...cat };
+        result = c;
+      }
+    });
+
+    // const cat = cats.find((c) => c.id === req.params.id);
+    res.status(200).send({ success: true, data: result });
+  } catch (error) {
+    res.status(400).send({ success: false, error: error.message });
+  }
+});
+
+router.patch("/cats/:id", (req, res) => {
+  try {
+    const newCat = Cat.filter((c) => c.id !== req.params.id);
+
+    // const cat = cats.find((c) => c.id === req.params.id);
+    res.status(200).send({ success: true, data: newCat });
+  } catch (error) {
+    res.status(400).send({ success: false, error: error.message });
+  }
+});
+``;
+
 export default router;
