@@ -3,6 +3,8 @@ import {
   Delete,
   Get,
   HttpException,
+  Param,
+  ParseIntPipe,
   Patch,
   Post,
   Put,
@@ -19,7 +21,11 @@ export class CatsController {
   }
 
   @Get(':id')
-  getOneCat() {
+  getOneCat(@Param('id', ParseIntPipe) param) {
+    // ParseIntPipe 활용하여 타입을 바꿔준다.
+    // Int로 바뀌지 않을 경우, Validation에러 까지 잡아준다.
+    console.log('param', param);
+    console.log(typeof param);
     return 'all cat';
   }
 
