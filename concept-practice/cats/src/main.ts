@@ -9,3 +9,4 @@ async function bootstrap() {
   await app.listen(8000);
 }
 bootstrap();
+HttpExceptionFilter;
